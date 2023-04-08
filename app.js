@@ -8,10 +8,11 @@ import { errorMiddleware } from "./middlewares/errorMiddlewares.js";
 import cors from "cors";
 
 const app = express();
-export default app;
+
 dotenv.config({
   path: "./config/config.env",
 });
+
 
 // Using Middlewares
 app.use(
@@ -56,6 +57,8 @@ import orderRoute from "./routes/order.js";
 
 app.use("/api/v1", userRoute);
 app.use("/api/v1", orderRoute);
+
+export default app;
 
 // Using Error Middleware
 app.use(errorMiddleware);
