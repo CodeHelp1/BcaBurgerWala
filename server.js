@@ -17,4 +17,3 @@ app.listen(process.env.PORT, () =>
     `Server is working on PORT: ${process.env.PORT}, in ${process.env.NODE_ENV} MODE`
   )
 );
-
