@@ -2,17 +2,16 @@ import express, { urlencoded } from "express";
 import dotenv from "dotenv";
 import { connectPassport } from "./utils/Provider.js";
 import session from "express-session";
-import passport from "passport";
 import cookieParser from "cookie-parser";
-import { errorMiddleware } from "./middlewares/errorMiddlewares.js";
+import passport from "passport";
+import { errorMiddleware } from "./middlewares/errorMiddleware.js";
 import cors from "cors";
 
 const app = express();
-
+export default app;
 dotenv.config({
   path: "./config/config.env",
 });
-
 
 // Using Middlewares
 app.use(
@@ -28,7 +27,6 @@ app.use(
     },
   })
 );
-
 app.use(cookieParser());
 app.use(express.json());
 app.use(
@@ -57,8 +55,6 @@ import orderRoute from "./routes/order.js";
 
 app.use("/api/v1", userRoute);
 app.use("/api/v1", orderRoute);
-
-export default app;
 
 // Using Error Middleware
 app.use(errorMiddleware);

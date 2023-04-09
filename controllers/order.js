@@ -1,9 +1,9 @@
-import { asyncError } from "../middlewares/errorMiddlewares.js";
+import { asyncError } from "../middlewares/errorMiddleware.js";
 import { Order } from "../models/Order.js";
-import {Payment} from "../models/Payment.js"
+import { Payment } from "../models/Payment.js";
 import ErrorHandler from "../utils/ErrorHandler.js";
-import {instance} from "../server.js";
-import crypto from "crypto"
+import { instance } from "../server.js";
+import crypto from "crypto";
 
 export const placeOrder = asyncError(async (req, res, next) => {
   const {
@@ -91,7 +91,6 @@ export const paymentVerification = asyncError(async (req, res, next) => {
 
   const isAuthentic = expectedSignature === razorpay_signature;
 
-
   if (isAuthentic) {
     const payment = await Payment.create({
       razorpay_order_id,
@@ -144,7 +143,6 @@ export const getAdminOrders = asyncError(async (req, res, next) => {
     orders,
   });
 });
-
 export const processOrder = asyncError(async (req, res, next) => {
   const order = await Order.findById(req.params.id);
 
