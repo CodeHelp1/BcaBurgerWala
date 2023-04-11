@@ -37,7 +37,7 @@ app.use(
 
 app.use(
   cors({
-    credentials: true,
+    credentials: false,
     origin: process.env.FRONTEND_URL,
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
